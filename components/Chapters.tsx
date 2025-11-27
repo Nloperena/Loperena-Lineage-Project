@@ -184,7 +184,7 @@ export function Chapter2() {
           <div className="exhibit-card info-dense">
             <span className="exhibit-label">Status Claim</span>
             <h4 className="font-bold text-[#2C2420] mt-2 mb-1">Limpieza de Sangre</h4>
-            <p className="text-sm italic mb-2 text-gray-600">"Purity of Blood"</p>
+            <p className="text-sm italic mb-2 text-gray-600">&quot;Purity of Blood&quot;</p>
             <ul className="duties-list">
                 <li>Free of Moorish Blood</li>
                 <li>Free of Jewish Blood</li>
@@ -208,7 +208,7 @@ export function Chapter3() {
             <p>In the early 1600s, the Inquisition launched the famous Zugarramurdi witch hunt just north of the family valley. The Church suspected the Basques were still honoring the Goat Spirit (<em>Akerbeltz</em>).</p>
             
             <h3 className="text-xl font-bold text-[#2C2420] mt-6 mb-2 font-serif">The Family's Survival</h3>
-            <p>To survive, the Loperenas became "More Catholic than the Pope." They stopped public rituals, placed the Coat of Arms prominently on their home, and joined the Military and Priesthood.</p>
+            <p>To survive, the Loperenas became &quot;More Catholic than the Pope.&quot; They stopped public rituals, placed the Coat of Arms prominently on their home, and joined the Military and Priesthood.</p>
           </div>
   
           <div className="ledger-col data-col">
@@ -273,7 +273,7 @@ export function Chapter4() {
                     </div>
                     <div className="blazon-text">
                         <p className="blazon-title">The Wolf</p>
-                        <p className="text-xs italic">"Valiant Captain"</p>
+                        <p className="text-xs italic">&quot;Valiant Captain&quot;</p>
                     </div>
                 </div>
             </div>
