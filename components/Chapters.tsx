@@ -207,7 +207,7 @@ export function Chapter3() {
             
             <p>In the early 1600s, the Inquisition launched the famous Zugarramurdi witch hunt just north of the family valley. The Church suspected the Basques were still honoring the Goat Spirit (<em>Akerbeltz</em>).</p>
             
-            <h3 className="text-xl font-bold text-[#2C2420] mt-6 mb-2 font-serif">The Family's Survival</h3>
+            <h3 className="text-xl font-bold text-[#2C2420] mt-6 mb-2 font-serif">The Family&apos;s Survival</h3>
             <p>To survive, the Loperenas became &quot;More Catholic than the Pope.&quot; They stopped public rituals, placed the Coat of Arms prominently on their home, and joined the Military and Priesthood.</p>
           </div>
   
@@ -243,10 +243,10 @@ export function Chapter4() {
             <span className="folio-tag">CHAPTER IV: THE REIGN</span>
             <h2>The Era of Nobility <span className="date-range">(1700-1750)</span></h2>
             
-            <p><strong>Juan Bernardo Loperena</strong> (Diego's brother) moved to Pamplona and consolidated power. In 1732, he sued the Royal Courts to certify the family's lineage and won, becoming <em>Rey de Armas</em> (King of Arms).</p>
+            <p><strong>Juan Bernardo Loperena</strong> (Diego&apos;s brother) moved to Pamplona and consolidated power. In 1732, he sued the Royal Courts to certify the family&apos;s lineage and won, becoming <em>Rey de Armas</em> (King of Arms).</p>
             
             <h3 className="text-xl font-bold text-[#2C2420] mt-6 mb-2 font-serif">Warden of the Royal Palace</h3>
-            <p>His son (also Juan Bernardo) raised a cavalry unit during the War of the Fantástica (1762) and was appointed <strong>Alcaide</strong> (Warden) of the Royal Palace of Pamplona, holding the keys to the King's fortress.</p>
+            <p>His son (also Juan Bernardo) raised a cavalry unit during the War of the Fantástica (1762) and was appointed <strong>Alcaide</strong> (Warden) of the Royal Palace of Pamplona, holding the keys to the King&apos;s fortress.</p>
           </div>
   
           <div className="ledger-col data-col">
