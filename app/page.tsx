@@ -10,6 +10,176 @@ import {
   Epilogue 
 } from "@/components/Chapters";
 
+// Vertical CSS Timeline Implementation - Kept local as it has specific state logic
+function Appendix() {
+  const [activeLine, setActiveLine] = useState<"loperena" | "conti">("loperena");
+
+  return (
+    <div className="h-full flex flex-col">
+      <h2 className="text-3xl font-bold text-[#2C2420] mb-4 pb-4 border-b border-[#E5E0D8] text-center uppercase tracking-widest font-serif">
+        Appendix: The Bloodlines
+      </h2>
+
+      <div className="flex justify-center gap-4 mb-6">
+        <button 
+          onClick={() => setActiveLine("loperena")}
+          className={`px-4 py-2 font-mono text-xs uppercase tracking-widest transition-all ${
+            activeLine === "loperena" 
+              ? "bg-[#2C2420] text-white border border-[#2C2420]" 
+              : "bg-transparent text-[#2C2420] border border-[#D1C7B7] hover:bg-[#E6E0D4]"
+          }`}
+        >
+          House of Loperena
+        </button>
+        <button 
+          onClick={() => setActiveLine("conti")}
+          className={`px-4 py-2 font-mono text-xs uppercase tracking-widest transition-all ${
+            activeLine === "conti" 
+              ? "bg-[#8B2E2E] text-white border border-[#8B2E2E]" 
+              : "bg-transparent text-[#8B2E2E] border border-[#D1C7B7] hover:bg-[#E6E0D4]"
+          }`}
+        >
+          House of Conti
+        </button>
+      </div>
+      
+      <div className="bloodline-container">
+          <div className="timeline-thread"></div>
+
+          {activeLine === "loperena" ? (
+            <>
+              <div className="gen-node pair">
+                  <div className="card ancestor" style={{border: "2px dashed #2C2420", background: "#E6E0D4"}}>
+                      <h3>Juan Bernardo</h3>
+                      <p className="role">The King of Arms</p>
+                      <p className="location">Stayed in Spain</p>
+                  </div>
+                  <span className="marriage-link" style={{fontStyle: "normal", fontSize: "1rem", color: "#666"}}>— Brothers —</span>
+                  <div className="card ancestor">
+                      <h3>Diego Loperena</h3>
+                      <p className="role">The Root</p>
+                      <p className="location">c. 1685</p>
+                  </div>
+              </div>
+
+              <div className="gen-node">
+                  <div className="date-marker">1750</div>
+                  <div className="card ancestor">
+                      <h3>Pedro Juan Loperena</h3>
+                      <p className="role">The Immigrant (Son of Diego)</p>
+                      <p className="location">Navarre → Puerto Rico</p>
+                  </div>
+              </div>
+
+              <div className="gen-node">
+                  <div className="date-marker">1760</div>
+                  <div className="card ancestor">
+                      <h3>Manuel Loperena</h3>
+                      <p className="role">First Gen. Criollo</p>
+                  </div>
+              </div>
+
+              <div className="gen-node">
+                  <div className="date-marker">1833</div>
+                  <div className="card ancestor">
+                      <h3>Félix Antonio Loperena</h3>
+                      <p className="role">The Landowner</p>
+                      <p className="location">Moca, PR</p>
+                  </div>
+              </div>
+
+              <div className="gen-node pair">
+                  <div className="card ancestor">
+                      <h3>Félix Antonio</h3>
+                  </div>
+                  <span className="marriage-link">&</span>
+                  <div className="card spouse">
+                      <h3>Rita Conti</h3>
+                  </div>
+              </div>
+
+              <div className="gen-node">
+                  <div className="date-marker">1865</div>
+                  <div className="card ancestor">
+                      <h3>José María Loperena y Conti</h3>
+                      <p className="role">The Bridge</p>
+                  </div>
+              </div>
+
+              <div className="gen-node">
+                  <div className="date-marker">1891</div>
+                  <div className="card ancestor">
+                      <h3>Hipolito Loperena Sr.</h3>
+                      <p className="role">The Anchor</p>
+                  </div>
+              </div>
+
+              <div className="gen-node">
+                  <div className="date-marker">1939</div>
+                  <div className="card ancestor">
+                      <h3>Hipólito &quot;Polo&quot; Loperena Jr.</h3>
+                      <p className="role">The Unifier</p>
+                  </div>
+              </div>
+
+              <div className="gen-node">
+                  <div className="date-marker">1960s</div>
+                  <div className="card ancestor">
+                      <h3>Hipólito &quot;Joe&quot; Loperena III</h3>
+                      <p className="role">Pioneer of the North</p>
+                  </div>
+              </div>
+
+              <div className="gen-node current">
+                  <div className="date-marker">2025</div>
+                  <div className="card self">
+                      <h3>Nicholas & William</h3>
+                      <p className="role">Standard Bearers</p>
+                  </div>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* CONTI LINE */}
+              <div className="gen-node">
+                  <div className="date-marker">1700s</div>
+                  <div className="card spouse">
+                      <h3>Giovanni Giacomo Conti</h3>
+                      <p className="role">The Italian Root</p>
+                      <p className="location">Italy</p>
+                  </div>
+              </div>
+
+              <div className="gen-node">
+                  <div className="date-marker">1746</div>
+                  <div className="card spouse">
+                      <h3>Col. Rafael Conti</h3>
+                      <p className="role">Defender of Aguadilla</p>
+                      <p className="location">The War Hero</p>
+                  </div>
+              </div>
+
+              <div className="gen-node">
+                  <div className="date-marker">1845</div>
+                  <div className="card spouse">
+                      <h3>Rita Conti</h3>
+                      <p className="role">The Colonel&apos;s Daughter</p>
+                  </div>
+              </div>
+
+              <div className="gen-node">
+                  <div className="date-marker">Merged</div>
+                  <div className="card ancestor" style={{background: "#F0EBE0", border: "1px dashed #8B2E2E"}}>
+                      <p className="role" style={{color: "#8B2E2E"}}>Merged into House of Loperena</p>
+                  </div>
+              </div>
+            </>
+          )}
+      </div>
+    </div>
+  );
+}
+
 const SECTIONS = [
   { id: "cover", title: "Cover", label: "The Chronicle" },
   { id: "folio-ia", title: "Folio I-A", label: "Time of Gentiles" },
@@ -148,176 +318,6 @@ export default function ArchivalLedger() {
         </div>
 
       </main>
-    </div>
-  );
-}
-
-// Vertical CSS Timeline Implementation
-function Appendix() {
-  const [activeLine, setActiveLine] = useState<"loperena" | "conti">("loperena");
-
-  return (
-    <div className="h-full flex flex-col">
-      <h2 className="text-3xl font-bold text-[#2C2420] mb-4 pb-4 border-b border-[#E5E0D8] text-center uppercase tracking-widest font-serif">
-        Appendix: The Bloodlines
-      </h2>
-
-      <div className="flex justify-center gap-4 mb-6">
-        <button 
-          onClick={() => setActiveLine("loperena")}
-          className={`px-4 py-2 font-mono text-xs uppercase tracking-widest transition-all ${
-            activeLine === "loperena" 
-              ? "bg-[#2C2420] text-white border border-[#2C2420]" 
-              : "bg-transparent text-[#2C2420] border border-[#D1C7B7] hover:bg-[#E6E0D4]"
-          }`}
-        >
-          House of Loperena
-        </button>
-        <button 
-          onClick={() => setActiveLine("conti")}
-          className={`px-4 py-2 font-mono text-xs uppercase tracking-widest transition-all ${
-            activeLine === "conti" 
-              ? "bg-[#8B2E2E] text-white border border-[#8B2E2E]" 
-              : "bg-transparent text-[#8B2E2E] border border-[#D1C7B7] hover:bg-[#E6E0D4]"
-          }`}
-        >
-          House of Conti
-        </button>
-      </div>
-      
-      <div className="bloodline-container">
-          <div className="timeline-thread"></div>
-
-          {activeLine === "loperena" ? (
-            <>
-              <div className="gen-node pair">
-                  <div className="card ancestor" style={{border: "2px dashed #2C2420", background: "#E6E0D4"}}>
-                      <h3>Juan Bernardo</h3>
-                      <p className="role">The King of Arms</p>
-                      <p className="location">Stayed in Spain</p>
-                  </div>
-                  <span className="marriage-link" style={{fontStyle: "normal", fontSize: "1rem", color: "#666"}}>— Brothers —</span>
-                  <div className="card ancestor">
-                      <h3>Diego Loperena</h3>
-                      <p className="role">The Root</p>
-                      <p className="location">c. 1685</p>
-                  </div>
-              </div>
-
-              <div className="gen-node">
-                  <div className="date-marker">1750</div>
-                  <div className="card ancestor">
-                      <h3>Pedro Juan Loperena</h3>
-                      <p className="role">The Immigrant (Son of Diego)</p>
-                      <p className="location">Navarre → Puerto Rico</p>
-                  </div>
-              </div>
-
-              <div className="gen-node">
-                  <div className="date-marker">1760</div>
-                  <div className="card ancestor">
-                      <h3>Manuel Loperena</h3>
-                      <p className="role">First Gen. Criollo</p>
-                  </div>
-              </div>
-
-              <div className="gen-node">
-                  <div className="date-marker">1833</div>
-                  <div className="card ancestor">
-                      <h3>Félix Antonio Loperena</h3>
-                      <p className="role">The Landowner</p>
-                      <p className="location">Moca, PR</p>
-                  </div>
-              </div>
-
-              <div className="gen-node pair">
-                  <div className="card ancestor">
-                      <h3>Félix Antonio</h3>
-                  </div>
-                  <span className="marriage-link">&</span>
-                  <div className="card spouse">
-                      <h3>Rita Conti</h3>
-                  </div>
-              </div>
-
-              <div className="gen-node">
-                  <div className="date-marker">1865</div>
-                  <div className="card ancestor">
-                      <h3>José María Loperena y Conti</h3>
-                      <p className="role">The Bridge</p>
-                  </div>
-              </div>
-
-              <div className="gen-node">
-                  <div className="date-marker">1891</div>
-                  <div className="card ancestor">
-                      <h3>Hipolito Loperena Sr.</h3>
-                      <p className="role">The Anchor</p>
-                  </div>
-              </div>
-
-              <div className="gen-node">
-                  <div className="date-marker">1939</div>
-                  <div className="card ancestor">
-                      <h3>Hipólito "Polo" Loperena Jr.</h3>
-                      <p className="role">The Unifier</p>
-                  </div>
-              </div>
-
-              <div className="gen-node">
-                  <div className="date-marker">1960s</div>
-                  <div className="card ancestor">
-                      <h3>Hipólito "Joe" Loperena III</h3>
-                      <p className="role">Pioneer of the North</p>
-                  </div>
-              </div>
-
-              <div className="gen-node current">
-                  <div className="date-marker">2025</div>
-                  <div className="card self">
-                      <h3>Nicholas & William</h3>
-                      <p className="role">Standard Bearers</p>
-                  </div>
-              </div>
-            </>
-          ) : (
-            <>
-              {/* CONTI LINE */}
-              <div className="gen-node">
-                  <div className="date-marker">1700s</div>
-                  <div className="card spouse">
-                      <h3>Giovanni Giacomo Conti</h3>
-                      <p className="role">The Italian Root</p>
-                      <p className="location">Italy</p>
-                  </div>
-              </div>
-
-              <div className="gen-node">
-                  <div className="date-marker">1746</div>
-                  <div className="card spouse">
-                      <h3>Col. Rafael Conti</h3>
-                      <p className="role">Defender of Aguadilla</p>
-                      <p className="location">The War Hero</p>
-                  </div>
-              </div>
-
-              <div className="gen-node">
-                  <div className="date-marker">1845</div>
-                  <div className="card spouse">
-                      <h3>Rita Conti</h3>
-                      <p className="role">The Colonel's Daughter</p>
-                  </div>
-              </div>
-
-              <div className="gen-node">
-                  <div className="date-marker">Merged</div>
-                  <div className="card ancestor" style={{background: "#F0EBE0", border: "1px dashed #8B2E2E"}}>
-                      <p className="role" style={{color: "#8B2E2E"}}>Merged into House of Loperena</p>
-                  </div>
-              </div>
-            </>
-          )}
-      </div>
     </div>
   );
 }
