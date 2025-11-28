@@ -24,6 +24,13 @@ body {
   font-family: var(--font-eb-garamond), serif;
 }
 
+/* Mobile scrolling override */
+@media (max-width: 768px) {
+  body {
+    overflow: auto; /* Allow native scrolling on mobile if needed, though app/page handles it */
+  }
+}
+
 /* Typography overrides for "Ink" color */
 h1, h2, h3, h4, h5, h6, p, span, div, li {
   color: var(--foreground);
@@ -149,6 +156,24 @@ h1, h2, h3, h4, h5, h6, p, span, div, li {
     padding-top: 20px;
 }
 
+/* Mobile timeline adjustments */
+@media (max-width: 640px) {
+    .gen-node.pair {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .marriage-link {
+        transform: rotate(90deg);
+        margin: 10px 0;
+    }
+
+    .card {
+        min-width: 180px;
+        width: 100%;
+    }
+}
+
 .gen-node.pair .date-marker {
     position: absolute;
     top: -15px;
@@ -175,6 +200,24 @@ h1, h2, h3, h4, h5, h6, p, span, div, li {
     grid-template-columns: 3fr 2fr;
     gap: 40px;
     height: 100%;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* Mobile Layout for Ledger Grid */
+@media (max-width: 1024px) {
+    .ledger-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .folio-slide {
+        height: auto;
+        min-height: 100%;
+        overflow-y: visible;
+    }
 }
 
 .text-col p {
@@ -331,6 +374,21 @@ h1, h2, h3, h4, h5, h6, p, span, div, li {
     margin: 0; 
     transform: rotate(-15deg);
     z-index: 10;
+}
+
+@media (max-width: 640px) {
+    .wax-seal {
+        width: 60px;
+        height: 60px;
+        top: 0;
+        right: 0;
+    }
+    .seal-inner strong {
+        font-size: 1rem;
+    }
+    .seal-inner span {
+        font-size: 0.5rem;
+    }
 }
 
 .seal-inner {

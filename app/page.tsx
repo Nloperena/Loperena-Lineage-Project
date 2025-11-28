@@ -200,6 +200,7 @@ const SECTIONS = [
 
 export default function ArchivalLedger() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Keyboard Navigation
   useEffect(() => {
@@ -217,16 +218,42 @@ export default function ArchivalLedger() {
 
   const currentSection = SECTIONS[currentIndex];
 
+  const nextSlide = () => setCurrentIndex((prev) => Math.min(prev + 1, SECTIONS.length - 1));
+  const prevSlide = () => setCurrentIndex((prev) => Math.max(prev - 1, 0));
+
   return (
-    <div className="flex h-screen w-screen overflow-hidden">
+    <div className="flex h-screen w-screen overflow-hidden relative">
+      {/* Mobile Sidebar Overlay */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-30 lg:hidden"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar / Cloth Binding */}
-      <aside className="w-[280px] flex-shrink-0 border-r border-[#D1C7B7] flex flex-col bg-[#E6E0D4] relative shadow-inner z-20">
+      <aside 
+        className={`
+          fixed lg:static top-0 left-0 h-full w-[280px] z-40
+          flex-shrink-0 border-r border-[#D1C7B7] flex flex-col bg-[#E6E0D4] shadow-2xl lg:shadow-inner
+          transition-transform duration-300 ease-in-out
+          ${isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
+        `}
+      >
         {/* Binder Visual Cue */}
         <div className="absolute left-4 top-0 bottom-0 w-2 border-l border-r border-[#D1C7B7]/50"></div>
 
-        <div className="p-8 pl-12 pt-12 border-b border-[#D1C7B7]">
-          <h1 className="font-mono text-xs uppercase tracking-widest text-[#8B2E2E] mb-2 font-bold">File Reference</h1>
-          <p className="font-mono text-2xl font-bold text-[#2C2420]">LOP-2025</p>
+        <div className="p-8 pl-12 pt-12 border-b border-[#D1C7B7] flex justify-between items-start">
+          <div>
+            <h1 className="font-mono text-xs uppercase tracking-widest text-[#8B2E2E] mb-2 font-bold">File Reference</h1>
+            <p className="font-mono text-2xl font-bold text-[#2C2420]">LOP-2025</p>
+          </div>
+          <button 
+            onClick={() => setIsSidebarOpen(false)}
+            className="lg:hidden text-[#2C2420] hover:text-[#8B2E2E]"
+          >
+            ✕
+          </button>
         </div>
 
         <nav className="flex-1 overflow-y-auto py-8 pl-12 custom-scrollbar">
@@ -234,7 +261,10 @@ export default function ArchivalLedger() {
             {SECTIONS.map((section, index) => (
               <li key={section.id}>
                 <button
-                  onClick={() => setCurrentIndex(index)}
+                  onClick={() => {
+                    setCurrentIndex(index);
+                    setIsSidebarOpen(false);
+                  }}
                   className={`group flex flex-col items-start text-left transition-all duration-200 w-full pr-4 ${
                     currentIndex === index 
                       ? "text-[#8B2E2E] translate-x-1" 
@@ -265,20 +295,28 @@ export default function ArchivalLedger() {
       </aside>
 
       {/* Main Stage */}
-      <main className="flex-1 relative overflow-hidden flex flex-col p-8 md:p-12 items-center justify-center">
+      <main className="flex-1 relative overflow-hidden flex flex-col p-4 md:p-12 items-center justify-center w-full">
         
         {/* The Physical Page (Cardstock) */}
         <div className="relative w-full h-full max-w-6xl bg-[#FDFBF7] border border-[#E5E0D8] rounded-[2px] shadow-[1px_1px_2px_rgba(0,0,0,0.05),10px_10px_30px_rgba(44,30,20,0.15)] flex flex-col overflow-hidden">
           
           {/* Header inside the page */}
-          <header className="h-16 border-b border-[#E5E0D8] flex items-center justify-between px-8 md:px-12 bg-[#FDFBF7] z-10 flex-shrink-0">
+          <header className="h-16 border-b border-[#E5E0D8] flex items-center justify-between px-4 md:px-12 bg-[#FDFBF7] z-10 flex-shrink-0">
             <div className="flex items-center gap-4">
-              <span className="font-mono text-xs uppercase text-[#2C2420]/50">Current Folio:</span>
-              <span className="font-serif text-lg font-bold italic text-[#2C2420]">{currentSection.label}</span>
+              <button 
+                onClick={() => setIsSidebarOpen(true)}
+                className="lg:hidden mr-2 text-[#2C2420] hover:text-[#8B2E2E]"
+              >
+                ☰
+              </button>
+              <div className="flex flex-col md:flex-row md:items-center md:gap-4">
+                <span className="font-mono text-[10px] md:text-xs uppercase text-[#2C2420]/50">Current Folio:</span>
+                <span className="font-serif text-sm md:text-lg font-bold italic text-[#2C2420] truncate max-w-[150px] md:max-w-none">{currentSection.label}</span>
+              </div>
             </div>
             <div className="flex items-center gap-4">
-              <span className="font-mono text-xs uppercase text-[#2C2420]/50">Page</span>
-              <span className="font-mono text-sm font-bold border border-[#E5E0D8] px-2 py-1 rounded bg-white/50 text-[#2C2420]">
+              <span className="hidden md:inline font-mono text-xs uppercase text-[#2C2420]/50">Page</span>
+              <span className="font-mono text-xs md:text-sm font-bold border border-[#E5E0D8] px-2 py-1 rounded bg-white/50 text-[#2C2420]">
                 {String(currentIndex + 1).padStart(2, '0')} / {String(SECTIONS.length).padStart(2, '0')}
               </span>
             </div>
@@ -295,7 +333,7 @@ export default function ArchivalLedger() {
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 className="w-full h-full"
               >
-                <div className="h-full overflow-y-auto custom-scrollbar p-8 md:p-12 pb-24">
+                <div className="h-full overflow-y-auto custom-scrollbar p-4 md:p-12 pb-24">
                   {currentIndex === 0 && <CoverPage />}
                   {currentIndex === 1 && <FolioIA />}
                   {currentIndex === 2 && <FolioIB />}
@@ -315,6 +353,25 @@ export default function ArchivalLedger() {
               </motion.div>
             </AnimatePresence>
           </div>
+
+          {/* Mobile Navigation Controls */}
+          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#FDFBF7] to-transparent flex justify-between items-center px-8 pb-4 lg:hidden z-20 pointer-events-none">
+            <button 
+              onClick={prevSlide}
+              disabled={currentIndex === 0}
+              className={`pointer-events-auto w-10 h-10 rounded-full bg-[#E6E0D4] border border-[#D1C7B7] flex items-center justify-center text-[#2C2420] shadow-lg ${currentIndex === 0 ? "opacity-50" : "active:bg-[#D1C7B7]"}`}
+            >
+              ←
+            </button>
+            <button 
+              onClick={nextSlide}
+              disabled={currentIndex === SECTIONS.length - 1}
+              className={`pointer-events-auto w-10 h-10 rounded-full bg-[#E6E0D4] border border-[#D1C7B7] flex items-center justify-center text-[#2C2420] shadow-lg ${currentIndex === SECTIONS.length - 1 ? "opacity-50" : "active:bg-[#D1C7B7]"}`}
+            >
+              →
+            </button>
+          </div>
+
         </div>
 
       </main>
