@@ -133,7 +133,7 @@ function Appendix() {
               <div className="gen-node current">
                   <div className="date-marker">2025</div>
                   <div className="card self">
-                      <h3>Nicholas & William</h3>
+                      <h3>Nicholas &amp; William</h3>
                       <p className="role">Standard Bearers</p>
                   </div>
               </div>
@@ -182,18 +182,18 @@ function Appendix() {
 
 const SECTIONS = [
   { id: "cover", title: "Cover", label: "The Chronicle" },
-  { id: "folio-ia", title: "Folio I-A", label: "Time of Gentiles" },
+  { id: "folio-ia", title: "Folio I-A", label: "Mythic Origins" },
   { id: "folio-ib", title: "Folio I-B", label: "The Patriarch Diego" },
   { id: "folio-ic", title: "Folio I-C", label: "Law of Inheritance" },
-  { id: "ch2", title: "Chapter II", label: "Cross & Dragon" },
-  { id: "ch3", title: "Chapter III", label: "The Witch Trials" },
-  { id: "ch4", title: "Chapter IV", label: "The Reign" },
-  { id: "ch5", title: "Chapter V", label: "The Crossing" },
-  { id: "ch6", title: "Chapter VI", label: "Warrior Blood" },
-  { id: "ch7", title: "Chapter VII", label: "Golden Age & Crash" },
-  { id: "ch8", title: "Chapter VIII", label: "The Anchor" },
-  { id: "ch9", title: "Chapter IX", label: "Wolf & Crow" },
-  { id: "ch10", title: "Chapter X", label: "Bridge to Mainland" },
+  { id: "folio-ii", title: "Folio II", label: "Cross & Dragon" },
+  { id: "folio-iii", title: "Folio III", label: "The Purge" },
+  { id: "folio-iv", title: "Folio IV", label: "The Reign" },
+  { id: "folio-v", title: "Folio V", label: "The Crossing" },
+  { id: "folio-vi", title: "Folio VI", label: "Warrior Blood" },
+  { id: "folio-vii", title: "Folio VII", label: "The Industrial Transition" },
+  { id: "folio-viii", title: "Folio VIII", label: "The Anchor" },
+  { id: "folio-ix", title: "Folio IX", label: "Wolf & Crow" },
+  { id: "folio-x", title: "Folio X", label: "Bridge to Mainland" },
   { id: "epilogue", title: "Epilogue", label: "Standard Bearers" },
   { id: "appendix", title: "Appendix", label: "The Bloodlines" },
 ];
@@ -272,7 +272,9 @@ export default function ArchivalLedger() {
                   }`}
                 >
                   <div className={`flex items-center gap-3 ${currentIndex === index ? "border-l-4 border-[#8B2E2E] pl-2 -ml-3" : ""}`}>
-                    <span className="font-mono text-sm font-bold uppercase tracking-wider">{section.title}</span>
+                    <span className={`font-mono text-sm font-bold uppercase tracking-wider ${section.id === 'appendix' ? 'text-[#8B2E2E]' : ''}`}>
+                      {section.title}
+                    </span>
                   </div>
                   <span className={`font-serif text-sm italic mt-1 transition-colors ${
                     currentIndex === index ? "text-[#8B2E2E]/80 pl-2" : "text-[#2C2420]/40 pl-0"
@@ -289,7 +291,7 @@ export default function ArchivalLedger() {
           <p className="font-mono text-[10px] uppercase text-[#2C2420]/50 leading-relaxed">
             Archive Status: Open<br/>
             Last Access: {new Date().toLocaleDateString()}<br/>
-            Loc: Orlando, FL
+            Loc: ARCHIVE-FL-2025
           </p>
         </div>
       </aside>
@@ -338,15 +340,15 @@ export default function ArchivalLedger() {
                   {currentIndex === 1 && <FolioIA />}
                   {currentIndex === 2 && <FolioIB />}
                   {currentIndex === 3 && <FolioIC />}
-                  {currentIndex === 4 && <Chapter2 />}
-                  {currentIndex === 5 && <Chapter3 />}
-                  {currentIndex === 6 && <Chapter4 />}
-                  {currentIndex === 7 && <Chapter5 />}
-                  {currentIndex === 8 && <Chapter6 />}
-                  {currentIndex === 9 && <Chapter7 />}
-                  {currentIndex === 10 && <Chapter8 />}
-                  {currentIndex === 11 && <Chapter9 />}
-                  {currentIndex === 12 && <Chapter10 />}
+                  {currentIndex === 4 && <FolioII />}
+                  {currentIndex === 5 && <FolioIII />}
+                  {currentIndex === 6 && <FolioIV />}
+                  {currentIndex === 7 && <FolioV />}
+                  {currentIndex === 8 && <FolioVI />}
+                  {currentIndex === 9 && <FolioVII />}
+                  {currentIndex === 10 && <FolioVIII />}
+                  {currentIndex === 11 && <FolioIX />}
+                  {currentIndex === 12 && <FolioX />}
                   {currentIndex === 13 && <Epilogue />}
                   {currentIndex === 14 && <Appendix />}
                 </div>

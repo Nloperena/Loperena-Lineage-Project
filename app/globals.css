@@ -504,3 +504,15 @@ h1, h2, h3, h4, h5, h6, p, span, div, li {
     width: 100%;
     height: 100%;
 }
+
+/* Location map backgrounds */
+.map-placeholder[style*="navarre-frontier"] {
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Map_Kingdom_of_Navarre_1802-1841.svg/500px-Map_Kingdom_of_Navarre_1802-1841.svg.png"); /* Example: Old map of Navarre */
+  background-size: cover;
+  background-position: center;
+}
+.map-placeholder[style*="florida-map"] {
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Florida_USGS_map_1972.jpg/800px-Florida_USGS_map_1972.jpg"); /* Example: Vintage Florida map */
+  background-size: cover;
+  background-position: center;
+}

@@ -2,9 +2,9 @@
 
 import { 
   CoverPage, FolioIA, FolioIB, FolioIC, 
-  Chapter2, Chapter3, Chapter4, 
-  Chapter5, Chapter6, Chapter7, 
-  Chapter8, Chapter9, Chapter10, 
+  FolioII, FolioIII, FolioIV, 
+  FolioV, FolioVI, FolioVII, 
+  FolioVIII, FolioIX, FolioX, 
   Epilogue 
 } from "@/components/Chapters";
 
@@ -16,7 +16,7 @@ export default function StoryPage() {
         
         {/* Navigation / Header */}
         <nav className="sticky top-0 z-50 bg-[#FDFBF7]/90 backdrop-blur-sm border-b border-[#D1C7B7] p-4 flex justify-between items-center">
-          <span className="font-mono text-xs md:text-sm font-bold text-[#8B2E2E] tracking-widest">THE CHRONICLE</span>
+          <span className="font-mono text-xs md:text-sm font-bold text-[#8B2E2E] tracking-widest" style={{letterSpacing: '1px'}}>THE CHRONICLE</span>
           <a href="/" className="font-mono text-xs underline hover:text-[#8B2E2E]">Back to Ledger</a>
         </nav>
 
@@ -44,15 +44,15 @@ export default function StoryPage() {
           </section>
 
           <section className="py-16 md:py-24 px-4 md:px-16">
-            <Chapter2 />
+            <FolioII />
           </section>
 
           <section className="py-16 md:py-24 px-4 md:px-16">
-            <Chapter3 />
+            <FolioIII />
           </section>
 
           <section className="py-16 md:py-24 px-4 md:px-16">
-            <Chapter4 />
+            <FolioIV />
           </section>
 
           <div className="bg-[#E6E0D4] py-4 px-4 md:px-8 font-mono text-xs uppercase tracking-widest text-[#555] sticky top-12 z-40 border-y border-[#D1C7B7]">
@@ -60,15 +60,15 @@ export default function StoryPage() {
           </div>
 
           <section className="py-16 md:py-24 px-4 md:px-16">
-            <Chapter5 />
+            <FolioV />
           </section>
 
           <section className="py-16 md:py-24 px-4 md:px-16">
-            <Chapter6 />
+            <FolioVI />
           </section>
 
           <section className="py-16 md:py-24 px-4 md:px-16">
-            <Chapter7 />
+            <FolioVII />
           </section>
 
           <div className="bg-[#E6E0D4] py-4 px-4 md:px-8 font-mono text-xs uppercase tracking-widest text-[#555] sticky top-12 z-40 border-y border-[#D1C7B7]">
@@ -76,15 +76,15 @@ export default function StoryPage() {
           </div>
 
           <section className="py-16 md:py-24 px-4 md:px-16">
-            <Chapter8 />
+            <FolioVIII />
           </section>
 
           <section className="py-16 md:py-24 px-4 md:px-16">
-            <Chapter9 />
+            <FolioIX />
           </section>
 
           <section className="py-16 md:py-24 px-4 md:px-16">
-            <Chapter10 />
+            <FolioX />
           </section>
 
           <section className="py-16 md:py-24 px-4 md:px-16 bg-[#faf8f5]">
